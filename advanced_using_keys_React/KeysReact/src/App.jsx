@@ -7,7 +7,11 @@ function App() {
 
   return (
     <div>
-      {kelly ? <Counter name="kelly" /> : <Counter name="nam" />}
+      {kelly ? (
+        <Counter name="kelly" key="kelly" />
+      ) : (
+        <Counter name="nam" key="nam" />
+      )}
       <br />
       <button
         onClick={() => {
