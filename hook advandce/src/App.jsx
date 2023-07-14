@@ -1,25 +1,39 @@
+import { useState } from "react";
+// import Counter from "../src/Counter";
 import "./App.css";
-import { useRef } from "react";
+// import { useEffect } from "react";
+// import { useRef } from "react";
 
 function App() {
-  const emailRef = useRef();
-  const passRef = useRef();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  // const [fullName, setFullName] = useState("");
 
-  const submit = (e) => {
-    e.preventDefault();
-    console.log({
-      email: emailRef.current.value,
-      password: passRef.current.value,
-    });
-  };
+  const fullName = `${firstName} ${lastName}`; //this way render 1
+
+  // useEffect(() => {
+  //   setFullName(`${firstName} ${lastName}`); //=====>This way re-render 2 times
+  // }, [lastName, firstName]);
   return (
-    <form onSubmit={submit}>
-      <label htmlFor="email">Email</label>
-      <input ref={emailRef} type="email" id="email" />
-      <label htmlFor="pass">Password</label>
-      <input type="password" id="pass" ref={passRef} />
-      <button type="submit">login</button>
-    </form>
+    <>
+      <input
+        type="text"
+        name="first"
+        id="fn"
+        onChange={(e) => {
+          setFirstName(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        name="last"
+        id="ln"
+        onChange={(e) => {
+          setLastName(e.target.value);
+        }}
+      />
+      <p>{fullName}</p>
+    </>
   );
 }
 
